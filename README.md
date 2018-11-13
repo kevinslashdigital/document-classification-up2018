@@ -19,6 +19,28 @@ version 1.0
 def __init__(self):
 	self.PATH = '/Data/km-5tag-seg-1.0' # here the path of khmer segmentation lib that i download from niptict
 ```
+### For frontend only
+This is for frontend development.
+##### Install additional prerequisites
+* [Node](https://nodejs.org/en/) please refer to their [installation guide](https://nodejs.org/en/download/package-manager/)
+* [Yarn](https://yarnpkg.com)  please refer to their [installation guide](https://yarnpkg.com/en/docs/install).
+
+```sh
+$ git clone https://bitbucket.org/ventureslash/kyc-api-fork.git
+$ cd kyc-api-fork
+$ yarn global add webpack
+$ yarn global add webpack-cli
+$ yarn global add webpack-dev-server
+$ yarn install # install the require dependancies
+```
+#### How to run frontend
+```sh
+$ yarn run dev # to start development 
+# to run with an Endpoint API
+#ENV_API=API_URL yarn run dev #ie. 
+$ENV_API=localhost:3000 yarn run dev
+$ yarn run build # to build for production
+```
 
 ## Who do I talk to? ##
 
