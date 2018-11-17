@@ -41,8 +41,9 @@ $ yarn run dev # to start development
 $ENV_API=localhost:3000 yarn run dev
 $ yarn run build # to build for production
 ```
-
-## Who do I talk to? ##
+run server 
+cd api
+LASK_APP=app.py flask run
 
 if you have any question, you can send to these emails.
 - email1@gmail.com

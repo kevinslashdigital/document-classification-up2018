@@ -10,8 +10,8 @@ from khmerml.utils.file_util import FileUtil
 
 class Classifier():
 
-  def __init__(self, *args, **kwargs):
-    if kwargs == None :
+  def __init__(self,from_main=True, *args, **kwargs):
+    if from_main == True :
       config = {
         'text_dir': 'data/dataset/doc',
         'dataset': 'data/matrix',
@@ -40,5 +40,5 @@ class Classifier():
 
 
 if __name__ == "__main__" :
-  cf = Classifier()
-  cf.classify()
+  cf = Classifier(from_main=True)
+  cf.classify(question="blockchain is hot top recently")
