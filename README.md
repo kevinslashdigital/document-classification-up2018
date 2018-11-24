@@ -26,8 +26,7 @@ This is for frontend development.
 * [Yarn](https://yarnpkg.com)  please refer to their [installation guide](https://yarnpkg.com/en/docs/install).
 
 ```sh
-$ git clone https://bitbucket.org/ventureslash/kyc-api-fork.git
-$ cd kyc-api-fork
+$ cd front
 $ yarn global add webpack
 $ yarn global add webpack-cli
 $ yarn global add webpack-dev-server
@@ -41,9 +40,12 @@ $ yarn run dev # to start development
 $ENV_API=localhost:3000 yarn run dev
 $ yarn run build # to build for production
 ```
-run server 
+#### Run Server
 cd api
-LASK_APP=app.py flask run
+FLASK_APP=app.py flask run
+# For window
+set FLASK_APP=app.py
+flask run
 
 if you have any question, you can send to these emails.
 - email1@gmail.com
