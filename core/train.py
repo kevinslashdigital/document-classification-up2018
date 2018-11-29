@@ -1,5 +1,5 @@
 """
-    Chatbot class
+    Document classification class
 """
 
 import sys, os
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     'dataset': 'data/matrix',
     'bag_of_words': 'data/bag_of_words',
     'train_model': 'data/model/doc.model',
-    'is_unicode': False
+    'is_unicode': True
   }
 
   ml = MachineLearning(**config)
@@ -36,9 +36,9 @@ if __name__ == "__main__":
   # print(dataset_sample)
 
   # split dataset -> train set, test set
-  training_set, test_set = ml.split_dataset(dataset_sample, 1)
+  # training_set = dataset_sample
   # train
-  model = algo.train(training_set)
+  training_set, test_set = ml.split_dataset(dataset_sample, 1)
 
   # make a prediction
   predictions = algo.predict(model, test_set)
@@ -47,5 +47,5 @@ if __name__ == "__main__":
 
   print('predictions, prediction_details', predictions, acc)
   print('label', ml.to_label(predictions,'data/bag_of_words/label_match.pickle'))
-  print('==== Chatbot train completed! ====')
+  print('==== Document classification train completed! ====')
 
