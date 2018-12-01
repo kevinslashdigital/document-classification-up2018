@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+  background-color: #75d9c2;
+}
+
+.App-logo {
+  height: 200px;
+  width: 60%;
+  box-shadow: 0px 0px 10px 5px #0000005e; 
+}
+
+.App-header {
+  height: 200px;
+  padding: 0px;
+  color: white;
+}
+
+.App-body {
+  height: 500px;
+  /* padding: 20px; */
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Row { 
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    border-spacing: 10px;
+    /* background-color: green; */
+}
+
+.Text-Area {
+  height: 200px;
+  width: 300px;
+  /* background-color: red; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 6px 6px 5px 0px #4a4a4ab0;
+}
+
+.BtnClassify {
+  height: 200px;
+  width: 150px;
+  /* background-Color: red; */
+  align-Items: center;
+  display: flex;
+}
+.btn {
+  height: 60px;
+  width: 200px;
+  background-color: #75d9c2; 
+  color: #ffffff;
+  /* border: 2px solid #4abdac; */
+}
+.triangle {
+  position: relative;
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #ffffff;
+}
+
+.center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.textarea {
+  width:295px;
+  height:195px;
+  color:#4a4a4a;
+  resize: none;
+  font-size: 16px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
