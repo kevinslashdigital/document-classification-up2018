@@ -1,14 +1,14 @@
 """
-    Document classification class
+    Document Classification class
 """
 
 import sys, os
 import argparse
 
-from khmerml.machine_learning import MachineLearning
-from khmerml.preprocessing.preprocessing_data import Preprocessing
-from khmerml.utils.file_util import FileUtil
-from khmerml.utils.bg_colors import Bgcolors
+from lib.khmerml.machine_learning import MachineLearning
+from lib.khmerml.preprocessing.preprocessing_data import Preprocessing
+from lib.khmerml.utils.file_util import FileUtil
+from lib.khmerml.utils.bg_colors import Bgcolors
 
 if __name__ == "__main__":
 
@@ -36,9 +36,9 @@ if __name__ == "__main__":
   # print(dataset_sample)
 
   # split dataset -> train set, test set
-  # training_set = dataset_sample
-  # train
   training_set, test_set = ml.split_dataset(dataset_sample, 1)
+  # train
+  model = algo.train(training_set)
 
   # make a prediction
   predictions = algo.predict(model, test_set)
@@ -47,5 +47,4 @@ if __name__ == "__main__":
 
   print('predictions, prediction_details', predictions, acc)
   print('label', ml.to_label(predictions,'data/bag_of_words/label_match.pickle'))
-  print('==== Document classification train completed! ====')
-
+  print('==== Document Classification train completed! ====')
