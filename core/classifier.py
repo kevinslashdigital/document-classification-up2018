@@ -4,9 +4,9 @@
 
 import argparse
 
-from lib.khmerml.machine_learning import MachineLearning
-from lib.khmerml.preprocessing.preprocessing_data import Preprocessing
-from lib.khmerml.utils.file_util import FileUtil
+from khmerml.machine_learning import MachineLearning
+from khmerml.preprocessing.preprocessing_data import Preprocessing
+from khmerml.utils.file_util import FileUtil
 
 class Classifier():
 

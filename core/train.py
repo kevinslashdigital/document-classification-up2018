@@ -5,10 +5,10 @@
 import sys, os
 import argparse
 
-from lib.khmerml.machine_learning import MachineLearning
-from lib.khmerml.preprocessing.preprocessing_data import Preprocessing
-from lib.khmerml.utils.file_util import FileUtil
-from lib.khmerml.utils.bg_colors import Bgcolors
+from khmerml.machine_learning import MachineLearning
+from khmerml.preprocessing.preprocessing_data import Preprocessing
+from khmerml.utils.file_util import FileUtil
+from khmerml.utils.bg_colors import Bgcolors
 
 if __name__ == "__main__":
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
   # split dataset -> train set, test set
   training_set, test_set = ml.split_dataset(dataset_sample, 1)
   # train
-  model = algo.train(training_set)
+  model = algo.train(dataset_sample)
 
   # make a prediction
   predictions = algo.predict(model, test_set)
