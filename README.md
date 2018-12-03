@@ -19,6 +19,7 @@ version 1.0
 def __init__(self):
 	self.PATH = '/Data/km-5tag-seg-1.0' # here the path of khmer segmentation lib that i download from niptict
 ```
+$ KM_PATH=/Users/visal/Downloads/km-5tag-seg-1.0 python3 train.py
 ### For frontend only
 This is for frontend development.
 ##### Install additional prerequisites
