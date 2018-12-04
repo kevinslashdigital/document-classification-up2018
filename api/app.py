@@ -1,3 +1,8 @@
+import sys,os
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(dir_path + "/../core")
+# print(dir_path,sys.path)
+
 import json
 from ..core.classifier import Classifier
 from flask import request
