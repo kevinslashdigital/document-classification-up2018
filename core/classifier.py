@@ -1,11 +1,10 @@
 """
     Chatbot class
 """
-
 import argparse
 
 from khmerml.machine_learning import MachineLearning
-from .lib.preprocessing_data import Preprocessing
+from lib.preprocessing_data import Preprocessing
 from khmerml.utils.file_util import FileUtil
 
 class Classifier():
@@ -40,5 +39,7 @@ class Classifier():
 
 
 if __name__ == "__main__" :
+  
+
   cf = Classifier(from_main=True)
   cf.classify(question="គ្រូពេទ្យ​ត្រូវ​តែ​មាន​វិជ្ជាជីវៈ​ពិតប្រាកដ ដើម្បី​សង្គ្រោះ​អាយុ​ជី​វិត​អ្នកជំងឺ")
