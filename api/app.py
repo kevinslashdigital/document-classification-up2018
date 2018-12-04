@@ -7,6 +7,16 @@ app = Flask(__name__)
 
 # cd api
 # FLASK_APP=app.py flask run
+popular = {
+  "agriculture": 0,
+  "economic": 0,
+  "entertainment": 0,
+  "environment": 0,
+  "health": 0,
+  "jobcareer": 0,
+  "sport": 0,
+  "technology": 0
+}
 
 @app.route("/")
 def hello():
@@ -28,9 +38,11 @@ def classify():
 
   cf = Classifier(**config)
   pred = cf.classify(doc)
-
+  global popular
+  popular['sport'] = popular['sport'] + 1
   response = {
     "prediction" : pred[0],
+    "popular": popular,
     "status" :"200"
   }
 
