@@ -44,7 +44,7 @@ def classify():
   cf = Classifier(**config)
   pred = cf.classify(doc)
   global popular
-  popular['sport'] = popular['sport'] + 1
+  popular[pred[0]] = popular[pred[0]] + 1
   response = {
     "prediction" : pred[0],
     "popular": popular,
