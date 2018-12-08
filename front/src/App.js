@@ -9,8 +9,11 @@ class App extends Component {
     OutputData: '',
   };
 
-  handleClick = async(header = null, body) => {
+  handleClick = async(header = null) => {
     console.log('this', this.state);
+    const body = {
+      doc: this.state.InputData
+    };
       // const _deviceId = Helper._getDeviceID();
       // const auth = await Helper._getToken(); // get user access token after login or register.	
       let defaultHeader = {
@@ -24,11 +27,11 @@ class App extends Component {
       //     Authorization: 'Bearer ' + auth,
       //   }, defaultHeader);
       // }
-    
-      const Url =  '';
+      const Url =  'http://127.0.0.1:5000/classify';
       const _header = header
         ? _.extend(header, defaultHeader)
         : defaultHeader;
+      console.log('body', body);
       return fetch(Url, {
         method: 'POST',
         headers: _header,
@@ -41,7 +44,6 @@ class App extends Component {
         return responseJson;
       })
       .catch((error) => { console.log(error); });
-      console.log('this.', this.state.InputData);
   }
 
   render() {
