@@ -1,3 +1,8 @@
+import sys,os
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(dir_path + "/../core")
+# print(dir_path,sys.path)
+
 import json
 from ..core.classifier import Classifier
 from flask import request
@@ -5,8 +10,18 @@ from flask import jsonify
 from flask import Flask
 app = Flask(__name__)
 
-# cd ai
-# FLASK_APP=hello.py flask run
+# cd api
+# FLASK_APP=app.py flask run
+popular = {
+  "agriculture": 0,
+  "economic": 0,
+  "entertainment": 0,
+  "environment": 0,
+  "health": 0,
+  "jobcareer": 0,
+  "sport": 0,
+  "technology": 0
+}
 
 @app.route("/")
 def hello():
@@ -28,9 +43,11 @@ def classify():
 
   cf = Classifier(**config)
   pred = cf.classify(doc)
-
+  global popular
+  popular[pred[0]] = popular[pred[0]] + 1
   response = {
     "prediction" : pred[0],
+    "popular": popular,
     "status" :"200"
   }
 

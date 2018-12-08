@@ -13,12 +13,14 @@ version 1.0
 * pip3 install khmerml
 * pip3 install flask
 #### unicode support ####
-* for unicode support, you need to install some dependencies, here the guideline : http://niptict.edu.kh/khmer-word-segmentation-tool/
+* for unicode support, you need to install some dependencies, here the guideline : 
+  http://niptict.edu.kh/khmer-word-segmentation-tool/
 * you need to modify the path in Libs/Unicode/KhmerSegment.py
 ```
 def __init__(self):
 	self.PATH = '/Data/km-5tag-seg-1.0' # here the path of khmer segmentation lib that i download from niptict
 ```
+$ KM_PATH=/Users/visal/Downloads/km-5tag-seg-1.0 python3 train.py
 ### For frontend only
 This is for frontend development.
 ##### Install additional prerequisites
@@ -26,8 +28,7 @@ This is for frontend development.
 * [Yarn](https://yarnpkg.com)  please refer to their [installation guide](https://yarnpkg.com/en/docs/install).
 
 ```sh
-$ git clone https://bitbucket.org/ventureslash/kyc-api-fork.git
-$ cd kyc-api-fork
+$ cd front
 $ yarn global add webpack
 $ yarn global add webpack-cli
 $ yarn global add webpack-dev-server
@@ -41,8 +42,12 @@ $ yarn run dev # to start development
 $ENV_API=localhost:3000 yarn run dev
 $ yarn run build # to build for production
 ```
-
-## Who do I talk to? ##
+#### Run Server
+cd api
+FLASK_APP=app.py flask run
+# For window
+set FLASK_APP=app.py
+flask run
 
 if you have any question, you can send to these emails.
 - email1@gmail.com

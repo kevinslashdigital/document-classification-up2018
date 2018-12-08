@@ -1,12 +1,12 @@
 """
-    Chatbot class
+    Document Classification class
 """
 
 import sys, os
 import argparse
 
 from khmerml.machine_learning import MachineLearning
-from khmerml.preprocessing.preprocessing_data import Preprocessing
+from lib.preprocessing_data import Preprocessing
 from khmerml.utils.file_util import FileUtil
 from khmerml.utils.bg_colors import Bgcolors
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     'dataset': 'data/matrix',
     'bag_of_words': 'data/bag_of_words',
     'train_model': 'data/model/doc.model',
-    'is_unicode': False
+    'is_unicode': True
   }
 
   ml = MachineLearning(**config)
@@ -47,5 +47,4 @@ if __name__ == "__main__":
 
   print('predictions, prediction_details', predictions, acc)
   print('label', ml.to_label(predictions,'data/bag_of_words/label_match.pickle'))
-  print('==== Chatbot train completed! ====')
-
+  print('==== Document Classification train completed! ====')

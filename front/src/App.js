@@ -3,7 +3,44 @@ import logo from './image/banner.png';
 import './App.css';
 
 class App extends Component {
-  state={};
+  state={
+    InputData: '',
+    OutputData: '',
+  };
+
+  handleClick = async() => {
+      // const _deviceId = Helper._getDeviceID();
+      // const auth = await Helper._getToken(); // get user access token after login or register.	
+      let defaultHeader = {
+        'Content-Type': 'application/json',
+        // 'X-GT-Session-ID': _deviceId, // device of machine
+        // 'X-GT-Request-ID': APP_KEY, //
+        // 'X-Requested-With': 'XMLHttpRequest',
+      };
+      // if ((url !== '/api/auth/login')) {
+      //   defaultHeader = _.extend({
+      //     Authorization: 'Bearer ' + auth,
+      //   }, defaultHeader);
+      // }
+    
+      const Url = API_URL + url;
+      const _header = header
+        ? _.extend(header, defaultHeader)
+        : defaultHeader;
+      return fetch(Url, {
+        method: 'POST',
+        headers: _header,
+        body: _.isObject(body)
+          ? JSON.stringify(body)
+          : body,
+      })
+      .then(response => response.json())
+      .then((responseJson) =>	{
+        return responseJson;
+      })
+      .catch((error) => { console.log(error); });
+      console.log('this.', this.state.InputData);
+  }
 
   render() {
     return (
@@ -15,10 +52,16 @@ class App extends Component {
         <body class="App-body">
           <div className="Row">
             <div className="Text-Area">
-              <textarea name="message" className="textarea" placeholder="Please Input your document..." />
+              <textarea
+                name="message"
+                className="textarea"
+                placeholder="Please Input your document..."
+                value={this.state.InputData}
+                onChange={(e) => this.setState({InputData: e.target.value})}
+              />
             </div>
             <div className="BtnClassify">
-              <button type="button" onclick="alert('Hello World!')" className="btn">
+              <button type="button" onclick={() => this.handleClick()} className="btn">
                 <div className="center">
                   <h5>ENTER</h5>
                   <div className="triangle" />
@@ -26,7 +69,13 @@ class App extends Component {
               </button>
             </div>
             <div className="Text-Area">
-              <textarea name="message" className="textarea" placeholder="Here your result..." />
+              <textarea
+              name="message"
+              className="textarea"
+              placeholder="Here your result..."
+              readOnly
+              value={this.state.OutputData}
+            />
             </div>    
           </div>
 
