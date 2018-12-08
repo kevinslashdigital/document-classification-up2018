@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import logo from './image/banner.png';
 import './App.css';
 
@@ -8,14 +9,15 @@ class App extends Component {
     OutputData: '',
   };
 
-  handleClick = async() => {
+  handleClick = async(header = null, body) => {
+    console.log('this', this.state);
       // const _deviceId = Helper._getDeviceID();
       // const auth = await Helper._getToken(); // get user access token after login or register.	
       let defaultHeader = {
         'Content-Type': 'application/json',
         // 'X-GT-Session-ID': _deviceId, // device of machine
         // 'X-GT-Request-ID': APP_KEY, //
-        // 'X-Requested-With': 'XMLHttpRequest',
+        // 'X-Requested-With': 'XMLttpRequest',
       };
       // if ((url !== '/api/auth/login')) {
       //   defaultHeader = _.extend({
@@ -23,7 +25,7 @@ class App extends Component {
       //   }, defaultHeader);
       // }
     
-      const Url = API_URL + url;
+      const Url =  '';
       const _header = header
         ? _.extend(header, defaultHeader)
         : defaultHeader;
@@ -49,7 +51,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
-        <body class="App-body">
+        <body className="App-body">
           <div className="Row">
             <div className="Text-Area">
               <textarea
@@ -61,7 +63,7 @@ class App extends Component {
               />
             </div>
             <div className="BtnClassify">
-              <button type="button" onclick={() => this.handleClick()} className="btn">
+              <button type="button" onClick={() => this.handleClick()} className="btn">
                 <div className="center">
                   <h5>ENTER</h5>
                   <div className="triangle" />
