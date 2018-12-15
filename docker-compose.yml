@@ -1,0 +1,16 @@
+version: '3'
+services:
+  # api:
+  #   build: ./api
+  #   environment:
+  #     - FLASK_APP=app.py
+  #     - KM_PATH=/Users/visal/Downloads/km-5tag-seg-1.0
+  #   ports:
+  #     - "5000:5000"
+  front: 
+    build: ./front
+    environment:
+      - ENV_API=localhost:3000
+    ports:
+      - "3000:3000"
+    
