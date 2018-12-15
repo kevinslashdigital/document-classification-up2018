@@ -52,15 +52,24 @@
 
 .BtnClassify {
   height: 200px;
-  width: 150px;
   /* background-Color: red; */
-  align-Items: center;
   display: flex;
+  align-Items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .btn {
   height: 60px;
   width: 200px;
   background-color: #75d9c2; 
+  color: #ffffff;
+  /* border: 2px solid #4abdac; */
+}
+
+.btnClear {
+  height: 60px;
+  width: 200px;
+  background-color: #e16360; 
   color: #ffffff;
   /* border: 2px solid #4abdac; */
 }
