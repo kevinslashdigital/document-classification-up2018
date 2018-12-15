@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import logo from './image/banner.png';
+// import logo from 'https://vichhaiy.files.wordpress.com/2013/01/010813_0312_universityo1.png';
 import './App.css';
 
 class App extends Component {
   state={
     InputData: '',
     OutputData: '',
+    emptyData: false,
   };
 
   handleClick = async(header = null) => {
-    console.log('this', this.state);
+    if (!this.state.InputData) {
+      this.setState({
+        emptyData: true,
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            emptyData: false,
+          })
+        }, 2000);
+      });
+      return;
+    }
     const body = {
       doc: this.state.InputData
     };
@@ -31,7 +43,6 @@ class App extends Component {
       const _header = header
         ? _.extend(header, defaultHeader)
         : defaultHeader;
-      console.log('body', body);
       return fetch(Url, {
         method: 'POST',
         headers: _header,
@@ -41,16 +52,29 @@ class App extends Component {
       })
       .then(response => response.json())
       .then((responseJson) =>	{
-        return responseJson;
+        this.setState({
+          OutputData: responseJson.prediction || '',
+        }, () => {
+          // console.log('result', this.state.result);
+        });
       })
       .catch((error) => { console.log(error); });
   }
 
+  handleClear = () => {
+    this.setState({
+      InputData: '',
+      OutputData: '',
+    });
+  }
+
   render() {
+    const placeholder1 = this.state.emptyData ? 'Please input your document !!!' : 'Document here...';
+    const placeholder2 = this.state.emptyData ? 'No document found !!!' : 'Result...';
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src='https://vichhaiy.files.wordpress.com/2013/01/010813_0312_universityo1.png' className="App-logo" alt="logo" />
           {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
         <body className="App-body">
@@ -59,7 +83,7 @@ class App extends Component {
               <textarea
                 name="message"
                 className="textarea"
-                placeholder="Please Input your document..."
+                placeholder={placeholder1}
                 value={this.state.InputData}
                 onChange={(e) => this.setState({InputData: e.target.value})}
               />
@@ -71,12 +95,17 @@ class App extends Component {
                   <div className="triangle" />
                 </div>
               </button>
+              <button type="button" onClick={() => this.handleClear()} className="btnClear">
+                <div className="center">
+                  <h5>CLEAR</h5>
+                </div>
+              </button>              
             </div>
             <div className="Text-Area">
               <textarea
               name="message"
               className="textarea"
-              placeholder="Here your result..."
+              placeholder={placeholder2}
               readOnly
               value={this.state.OutputData}
             />

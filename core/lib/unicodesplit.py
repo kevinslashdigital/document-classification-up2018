@@ -25,9 +25,10 @@ class UnicodeSplit:
     # Read temporary file content
     result = KhmerSegment.read_file(output_file_w).split(' ')
     result = list(set(result))
+    print('result',result)
     # Clean up temporary files
-    KhmerSegment.remove_file(input_file)
-    KhmerSegment.remove_file(output_file_w)
-    KhmerSegment.remove_file(output_file_c)
+    # KhmerSegment.remove_file(input_file)
+    # KhmerSegment.remove_file(output_file_w)
+    # KhmerSegment.remove_file(output_file_c)
 
     return result
