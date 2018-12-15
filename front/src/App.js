@@ -8,12 +8,15 @@ class App extends Component {
     InputData: '',
     OutputData: '',
     emptyData: false,
+    isHaveData: false,
+    pendding: false,
   };
 
   handleClick = async(header = null) => {
     if (!this.state.InputData) {
       this.setState({
         emptyData: true,
+        OutputData: '',
       }, () => {
         setTimeout(() => {
           this.setState({
@@ -23,6 +26,10 @@ class App extends Component {
       });
       return;
     }
+    this.setState({
+      isHaveData: true,
+      OutputData: '',
+    });
     const body = {
       doc: this.state.InputData
     };
@@ -53,9 +60,15 @@ class App extends Component {
       .then(response => response.json())
       .then((responseJson) =>	{
         this.setState({
-          OutputData: responseJson.prediction || '',
+          isHaveData: false,
+          pendding: true,
         }, () => {
-          // console.log('result', this.state.result);
+          setTimeout(() => {
+            this.setState({
+              pendding: false,
+              OutputData: `The result is ${responseJson.prediction.toUpperCase()}` || '',
+            });
+          }, 1000);
         });
       })
       .catch((error) => { console.log(error); });
@@ -69,8 +82,15 @@ class App extends Component {
   }
 
   render() {
+    let placeholder2 = 'Result...';
     const placeholder1 = this.state.emptyData ? 'Please input your document !!!' : 'Document here...';
-    const placeholder2 = this.state.emptyData ? 'No document found !!!' : 'Result...';
+    if (this.state.isHaveData) {
+      placeholder2 = 'Compilation...';
+    } else if (this.state.emptyData) {
+      placeholder2 = 'No document found !!!';
+    } else if (this.state.pendding) {
+      placeholder2 = 'The result is ...'
+    }
     return (
       <div className="App">
         <header className="App-header">
