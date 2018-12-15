@@ -4,8 +4,7 @@ import time
 
 class KhmerSegment:
 	def __init__(self):
-		self.PATH = "D:\km-5tag-seg-1.0"
-    	# self.PATH = 'D:\km-5tag-seg-1.0\km-5tag-seg-1.0'
+		self.PATH = os.environ['KM_PATH']
 
 	def add_to_file(self, text):
 		seconds = str(int(time.time() * 1000000))
