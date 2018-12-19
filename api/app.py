@@ -15,14 +15,14 @@ CORS(app)
 # cd api
 # FLASK_APP=app.py flask run
 popular = {
-  "agriculture": 0,
-  "economic": 0,
-  "entertainment": 0,
-  "environment": 0,
-  "health": 0,
-  "jobcareer": 0,
-  "sport": 0,
-  "technology": 0
+  "កសិកម្ម": 0,
+  "សេដ្ឋកិច្ច": 0,
+  "កំសាន្ត": 0,
+  "បរិស្ថាន": 0,
+  "សុខភាព": 0,
+  "ការងារ": 0,
+  "កីឡា": 0,
+  "បច្ចេកវិទ្យា": 0
 }
 
 @app.route("/")
@@ -46,9 +46,20 @@ def classify():
   cf = Classifier(**config)
   pred = cf.classify(doc)
   global popular
-  popular[pred[0]] = popular[pred[0]] + 1
+  translate = {
+    "agriculture": "កសិកម្ម",
+    "economic": "សេដ្ឋកិច្ច",
+    "entertainment": "កំសាន្ត",
+    "environment": "បរិស្ថាន",
+    "health": "សុខភាព",
+    "jobcareer": "ការងារ",
+    "sport": "កីឡា",
+    "technology": "បច្ចេកវិទ្យា"
+  }
+  popular[translate[pred[0]]] = popular[translate[pred[0]]] + 1
+
   response = {
-    "prediction" : pred[0],
+    "prediction" : translate[pred[0]],
     "popular": popular,
     "status" :"200"
   }

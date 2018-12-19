@@ -32,7 +32,7 @@ class Classifier():
   def classify(self,question = "គ្រូពេទ្យ​ត្រូវ​តែ​មាន​វិជ្ជាជីវៈ​ពិតប្រាកដ ដើម្បី​សង្គ្រោះ​អាយុ​ជី​វិត​អ្នកជំងឺ"):
     # preprocess
     mat = self.prepro.loading_single_doc(question, 'doc_freq', 1)
-    print('mat',mat)
+    # print('mat',mat)
     prediction = self.algo.predict(self.model, [mat])
     label = self.ml.to_label(prediction, 'data/bag_of_words/label_match.pickle')
     print(label)
